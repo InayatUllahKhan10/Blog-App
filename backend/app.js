@@ -21,7 +21,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use("/uploads", express.static(path.join(__dirname, 'uploads')));
 
-app.use(cors());
+app.use(cors({
+  origin: 'https://blog-app-olive-one.vercel.app', // update with your actual frontend URL
+  credentials: true
+}));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
